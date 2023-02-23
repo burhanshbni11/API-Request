@@ -1,23 +1,30 @@
-import logo from './logo.svg';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import './App.css';
+import List from './components/List';
+import Navbar from './components/Navbar';
 
 function App() {
+
+  const [data, setData] = useState([]);
+
+useEffect(() => {
+ 
+const getData = () => {
+  // fetch('https://newsapi.org/v2/everything?q=tesla&from=2023-01-22&sortBy=publishedAt&apiKey=ed46475ea644475e82b103f9ba476cb8')
+  // .then(response => response.json())
+  // .then(data => setData(data.articles))
+  // .catch(error => console.log(error))
+  axios.get('https://newsapi.org/v2/everything?q=tesla&from=2023-01-22&sortBy=publishedAt&apiKey=ed46475ea644475e82b103f9ba476cb8')
+  .then(response => setData(response.data.articles))
+}
+getData();
+},[])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+       <Navbar />
+       <List data={data} />
     </div>
   );
 }

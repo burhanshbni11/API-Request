@@ -1,0 +1,13 @@
+.navbar-container{
+    background-color: rgb(46, 142, 206);
+    height: 10vh;
+    
+    
+}
+.navbar-container>h1{
+    margin-left: 20px;
+    margin-top: 10px;
+}
+.App {
+    background-color: rgb(167, 231, 231);
+}
